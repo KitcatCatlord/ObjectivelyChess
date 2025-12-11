@@ -21,7 +21,7 @@ public class Utilities
 {
     public static readonly char[] whitePieceArray = { '♔', '♕', '♖', '♗', '♘', '♙' };
     public static readonly char[] blackPieceArray = { '♚', '♛', '♜', '♝', '♞', '♟' };
-    public static readonly char[] pieceArray = { '♔', '♕', '♖', '♗', '♘', '♙', '♚', '♛', '♜', '♝', '♞', '♟', '.' }; //TODO: Replace . with black and white squares.
+    public static readonly char[] pieceArray = { '♔', '♕', '♖', '♗', '♘', '♙', '♚', '♛', '♜', '♝', '♞', '♟', '.' }; // TODO: Replace . with black and white squares.
     public static int instantiatedPieces = 0;
     public static char GetPieceChar(Piece piece)
     {
@@ -46,6 +46,10 @@ public class Utilities
         if ((int)Board.boardArr[location[0], location[1]] == 12)
             return true;
         return false;
+    }
+    public static bool SetPieceToDead(int[] location) // True for successful
+    {
+        return Board.SpecPieceArray[location[0], location[1]].Kill();
     }
 }
 class Square
@@ -76,7 +80,7 @@ class Board
         { Piece.wPawn, Piece.wPawn ,Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn},
         { Piece.wRook, Piece.wKnight, Piece.wBishop, Piece.wQueen, Piece.wKing, Piece.wBishop, Piece.wKnight, Piece.wRook},
     };
-    public static SpecPiece[,]? SpecPieceArray;
+    public static SpecPiece[,] SpecPieceArray = new SpecPiece[_width, _height];
     public void Initialise()
     {
         boardArr = initialBoard;
@@ -128,14 +132,26 @@ abstract class SpecPiece
     {
         _pieceID = Utilities.instantiatedPieces;
         Utilities.instantiatedPieces++;
+        Board.SpecPieceArray[_currentSquare[0], _currentSquare[1]] = this;
+    }
+    public bool Kill()
+    {
+        if (!_isAlive)
+        {
+            _isAlive = false;
+            return true;
+        }
+        return false;
     }
     abstract public bool isValidMove(int xDiff, int yDiff);
     public bool TryMove(int xDiff, int yDiff) // true for successful
     {
+        bool returnValue = false;
         if (isValidMove(xDiff, yDiff))
         {
             _currentSquare[0] = _currentSquare[0] + xDiff;
             _currentSquare[1] = _currentSquare[0] + yDiff;
+            returnValue = true;
         }
         bool OpponentIsWhite = !(Utilities.IsWhite(_pieceType));
         if (Board.boardArr == null) throw new Exception("Board null at IsSquareOccupied");
@@ -155,8 +171,22 @@ abstract class SpecPiece
             // I won't explain, I'll just show...
             // It didn't like it, I'll try something else...
             // I'm going to add this to git quickly so that I can do commits and get my graph up again
+            // This would work but I can't make it put itself in the SpecPiece array because IT DOESN'T LIKE IT!
+            // Maybe just put the ID?
+            // But then I get the same issue as before of having to search through the IDs, and that won't work unless I make a bunch of changes.
+            // I'm thinking...
+            // OMG I can I just put 'this'.
+            // Alright, now what?
+            // I've forgotten I've been gone for around 4 minutes.
+            // Oh right, the spec.
+            // Oh wait, I was writing this function, wasn't I!
+            // I need to make it take pieces now.
+            // Which I still need to figure out.
+            // This large block of comments will be staying in the code, I didn't spend all this time writing to myself for nothing! Now everyone can see how crazy I've gone doing this so late.
+            // Why am I even adding these 'True for successful' comments? It's not like I'm going to use them ever. Even for debugging I'll just log it...
+            Utilities.SetPieceToDead(_currentSquare);
         }
-        return false;
+        return returnValue;
     }
 }
 class Program
