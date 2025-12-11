@@ -1,0 +1,14 @@
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/bin/Debug/net9.0/ObjectivelyChess
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/bin/Debug/net9.0/ObjectivelyChess.deps.json
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/bin/Debug/net9.0/ObjectivelyChess.runtimeconfig.json
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/bin/Debug/net9.0/ObjectivelyChess.dll
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/bin/Debug/net9.0/ObjectivelyChess.pdb
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.AssemblyInfoInputs.cache
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.AssemblyInfo.cs
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.csproj.CoreCompileInputs.cache
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.dll
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/refint/ObjectivelyChess.dll
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.pdb
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ObjectivelyChess.genruntimeconfig.cache
+/Users/kianconti/dev/School/Williams/LargeScale/ObjectivelyChess/obj/Debug/net9.0/ref/ObjectivelyChess.dll
