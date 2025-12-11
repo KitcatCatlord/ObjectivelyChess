@@ -49,7 +49,8 @@ public class Utilities
     }
     public static bool SetPieceToDead(int[] location) // True for successful
     {
-        return Board.SpecPieceArray[location[0], location[1]].Kill();
+        if (Board.SpecPieceArray[location[0], location[1]] == null) throw new Exception("SpecPieceArray null at SetPieceToDead");
+        return Board.SpecPieceArray[location[0], location[1]]!.Kill();
     }
 }
 class Square
@@ -80,7 +81,7 @@ class Board
         { Piece.wPawn, Piece.wPawn ,Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn, Piece.wPawn},
         { Piece.wRook, Piece.wKnight, Piece.wBishop, Piece.wQueen, Piece.wKing, Piece.wBishop, Piece.wKnight, Piece.wRook},
     };
-    public static SpecPiece[,] SpecPieceArray = new SpecPiece[_width, _height];
+    public static SpecPiece?[,] SpecPieceArray = new SpecPiece?[_width, _height];
     public void Initialise()
     {
         boardArr = initialBoard;
@@ -139,7 +140,8 @@ abstract class SpecPiece
         if (!_isAlive)
         {
             _isAlive = false;
-            return true;
+            Board.SpecPieceArray[_currentSquare[0], _currentSquare[1]] = null;
+                return true;
         }
         return false;
     }
@@ -155,7 +157,7 @@ abstract class SpecPiece
         }
         bool OpponentIsWhite = !(Utilities.IsWhite(_pieceType));
         if (Board.boardArr == null) throw new Exception("Board null at IsSquareOccupied");
-        if (Utilities.IsWhite(Board.boardArr[_currentSquare[0], _currentSquare[1]]) == OpponentIsWhite)
+        if (Utilities.IsWhite(Board.boardArr[_currentSquare[0], _currentSquare[1]]) == OpponentIsWhite && Utilities.IsEmpty(_currentSquare) == false)
         {
             // But how to make other piece dead?
             // Using an enum was so smart until it wasn't.
@@ -184,6 +186,9 @@ abstract class SpecPiece
             // Which I still need to figure out.
             // This large block of comments will be staying in the code, I didn't spend all this time writing to myself for nothing! Now everyone can see how crazy I've gone doing this so late.
             // Why am I even adding these 'True for successful' comments? It's not like I'm going to use them ever. Even for debugging I'll just log it...
+            // I should've made the stuff in Board take a coordinate as ain int[] as well as just x and y - I was going to do that originally but I didn't and it would be really nice right now.
+            // It's fine I can deal with it.
+            // Okay, I'm at the if statement of this block, on the and half, and it's complaining thet Utilities.IsEmpty() doesn't returna bool? Huh?
             Utilities.SetPieceToDead(_currentSquare);
         }
         return returnValue;
