@@ -141,7 +141,7 @@ abstract class SpecPiece
         {
             _isAlive = false;
             Board.SpecPieceArray[_currentSquare[0], _currentSquare[1]] = null;
-                return true;
+            return true;
         }
         return false;
     }
@@ -189,10 +189,53 @@ abstract class SpecPiece
             // I should've made the stuff in Board take a coordinate as ain int[] as well as just x and y - I was going to do that originally but I didn't and it would be really nice right now.
             // It's fine I can deal with it.
             // Okay, I'm at the if statement of this block, on the and half, and it's complaining thet Utilities.IsEmpty() doesn't returna bool? Huh?
+            // That one tiny commit took 20 minutes -_-.
+            // I'm really slowing down. It's only 22:19, but I guess I've done a lot of other work today.
+            // That commit added 9 lines and removed 4 D:.
+            // Also, I must keep the proper punctuation consistent, even with emojis!
+            // Three of those 9 lines were comments here...
+            // OMG I'm just realising how much I have left, there's no way I can complete this tonight and finish all of my other work!
+            // It's only 213 lines too (214 now I'm writing this). My brain is just so fried tonight.
+            // Okay, what next I guess...
+            // Specific piece class time! Wow, this is the first time I'm defining pieces because I thought ahead, it's not like I already made an enum and used that for everything previously!
+            // It's not like I did that at all no, it would require an entire rewrite to make it work with these classes! That would be silly!
+            // But the music is getting mor exciting again, maybe it's comeback time...
+            // I'm using the mouse by accident again...
+            // Also, I need to figure out how to resize each window in a tab split.
+            // I was going to start with the king, but actually checking for a valid move is really hard.
+            // Wait, it's really hard for everything because it needs to take the king out of check!
+            // But that's game logic stuff!
+            // I'll just make a public bool at the top of the program and call it a probelm for later me.
+            // Alright, new side of record, new me- I mean a fresh start- I mean... Yeah this doesn't change anything. But the music is much more active, maybe it'll hype me up.
+            // This is so weird just commenting in the comments. But it's the only break I have from programming so...
+            // I forgot how to override an abstract function for a second... what am I doingggggg!
+            // Ok placeholder function for checking in check, let's gooooooo...
+            // I wonder if anyone else has actually completed this task.
+            // Let me procrastinate by asking someone...
+            // Ok the bop remix is on, subwoofer time!
+            // It's called 'Celestial Resort (Good Karma Mix)' I think.
+            // Ok, do I have separate classes for the white and black pieces...?
+            // Oh that's cool, my nvim config highlights colours. It looks odd in the comments though.
+            // Ok I'm going to stop screen recording in a second and maybe take a break for a bit. I won't use up more storage on this silly screen recording...
+            // Bye, whoever's reading this.
+            // Bye, me.
             Utilities.SetPieceToDead(_currentSquare);
         }
         return returnValue;
     }
+}
+//class King : SpecPiece
+//{
+//    private override Piece _pieceType = Piece.wKing; 
+//    public override bool isValidMove(int xDiff, int yDiff) {
+//        if ()
+//    }
+//}
+class Game
+{
+    public bool whiteInCheck = false;
+    public bool blackInCheck = false;
+
 }
 class Program
 {
